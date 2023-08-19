@@ -5,38 +5,49 @@ import {
   Flex,
   Heading,
   Icon,
+  Spinner,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { MdHouse } from "react-icons/md";
 import { BsTools } from "react-icons/bs";
 import { MdTimelapse } from "react-icons/md";
 import { MdOutlineDashboard } from "react-icons/md";
-
-const character = {
-  id: "9e3f7ce4-b9a7-4244-b709-dae5c1f1d4a8",
-  name: "Harry Potter",
-  alternate_names: ["The Boy Who Lived", "The Chosen One"],
-  species: "human",
-  gender: "male",
-  house: "Gryffindor",
-  dateOfBirth: "31-07-1980",
-  yearOfBirth: 1980,
-  wizard: true,
-  ancestry: "half-blood",
-  eyeColour: "green",
-  hairColour: "black",
-  wand: { wood: "holly", core: "phoenix feather", length: 11 },
-  patronus: "stag",
-  hogwartsStudent: true,
-  hogwartsStaff: false,
-  actor: "Daniel Radcliffe",
-  alternate_actors: [],
-  alive: true,
-  image: "https://ik.imagekit.io/hpapi/harry.jpg",
-};
+import { useNavigate, useParams } from "react-router-dom";
+import { getCharacter } from "../../hooks/useFetchQuery";
+import { useQuery } from "react-query";
 
 const CharacterDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const toast = useToast();
+
+  const {
+    isLoading,
+    isError,
+    data: character,
+  } = useQuery(["characterDetail"], () => getCharacter(id!));
+  if (!id) return navigate("/");
+
+  if (isError) {
+    toast({
+      title: "An error occurred.",
+      description: "Unable to fetch data",
+      status: "error",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+    return;
+  }
+  if (isLoading) {
+    return (
+      <Flex>
+        <Spinner size="xl" />
+      </Flex>
+    );
+  }
   return (
     <Box my={2}>
       <Text color="brand.pink">Detail</Text>
@@ -120,21 +131,23 @@ const CharacterDetail = () => {
                 <Text fontSize="lg" fontWeight="bold">
                   Core
                 </Text>
-                <Text>{character.wand.core}</Text>
+                <Text>{character.wand.core ? character.wand.core : "N/A"}</Text>
               </Stack>
               <Stack align="center">
                 <Icon as={MdTimelapse} boxSize={8} color="brand.pink" />
                 <Text fontSize="lg" fontWeight="bold">
                   Length
                 </Text>
-                <Text>{character.wand.length}</Text>
+                <Text>
+                  {character.wand.length ? character.wand.length : "N/A"}
+                </Text>
               </Stack>
               <Stack align="center">
                 <Icon as={BsTools} boxSize={8} color="brand.pink" />
                 <Text fontSize="lg" fontWeight="bold">
                   Core
                 </Text>
-                <Text>{character.wand.wood}</Text>
+                <Text>{character.wand.wood ? character.wand.wood : "N/A"}</Text>
               </Stack>
             </Flex>
           </Stack>
