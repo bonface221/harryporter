@@ -8,17 +8,29 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+interface NavbarProps {
+  onSearch: (search: string) => void;
+}
+
+const Navbar = ({ onSearch }: NavbarProps) => {
+  const navigate = useNavigate();
   return (
     <Flex
       justify="space-between"
       align="center"
-      py={2}
+      py={3}
       flexDir={{ base: "column", sm: "row" }}
       gap={3}
     >
-      <Heading color="brand.pink">Hogwarts</Heading>
+      <Heading
+        color="brand.pink"
+        cursor="pointer"
+        onClick={() => navigate("/")}
+      >
+        Hogwarts
+      </Heading>
       <Box>
         <InputGroup>
           <InputLeftElement pointerEvents="none">
@@ -26,6 +38,7 @@ const Navbar = () => {
           </InputLeftElement>
           <Input
             bg="brand.bgIcon"
+            onChange={(e) => onSearch(e.target.value)}
             borderTopLeftRadius={3}
             borderTopEndRadius={3}
             variant="flushed"

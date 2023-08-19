@@ -38,6 +38,16 @@ function App() {
     setCharacters(data.slice(0, number));
   }, [number]);
 
+  const onSearch = (search: string) => {
+    if (!search) {
+      setCharacters(data.slice(0, number));
+      return;
+    }
+    const filteredCharacters = data.filter((character) =>
+      character.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setCharacters(filteredCharacters);
+  };
   const onNumberChange = () => {
     if (number < data.length && number + 20 < data.length) {
       setNumber(number + 20);
@@ -66,7 +76,7 @@ function App() {
   return (
     <Box bg="brand.bgBlack" color="brand.white" h="100vh" overflowY="scroll">
       <Box mx={{ base: "2%", md: "5%", lg: "10%" }}>
-        <Navbar />
+        <Navbar onSearch={onSearch} />
         {routes}
       </Box>
     </Box>

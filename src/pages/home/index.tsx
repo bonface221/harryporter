@@ -9,11 +9,13 @@ import {
 } from "@chakra-ui/react";
 import { MdHouse } from "react-icons/md";
 import { characters } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 interface HomeProps {
   number: number;
   characters: characters[];
   onNumberChange: () => void;
+
   dataLength: number;
 }
 
@@ -21,6 +23,7 @@ const Home = ({
   number,
   characters,
   onNumberChange,
+
   dataLength,
 }: HomeProps) => {
   const shouldShowLoadMore = () => {
@@ -29,11 +32,14 @@ const Home = ({
     }
     return false;
   };
+  const navigate = useNavigate();
+
   return (
     <Stack my={12} gap={10}>
       <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={10}>
         {characters.map((character) => (
           <Stack
+            onClick={() => navigate(`/${character.id}`)}
             key={character.id}
             align="center"
             gap={3}
