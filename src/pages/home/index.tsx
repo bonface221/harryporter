@@ -11,7 +11,7 @@ import { MdHouse } from "react-icons/md";
 
 const Home = ({ number, characters, onNumberChange, dataLength }) => {
   const shouldShowLoadMore = () => {
-    if (number !== dataLength && number) {
+    if (number !== dataLength && number <= characters.length) {
       return true;
     }
     return false;

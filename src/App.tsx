@@ -4,15 +4,23 @@ import CharacterDetail from "./pages/character-detail";
 import Home from "./pages/home";
 import { Box } from "@chakra-ui/react";
 import Navbar from "./components/navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { data } from "../playground";
 
 function App() {
   const [number, setNumber] = useState(20);
   const [characters, setCharacters] = useState(data.slice(0, number));
 
+  useEffect(() => {
+    setCharacters(data.slice(0, number));
+  }, [number]);
+
   const onNumberChange = () => {
-    setNumber(10);
+    if (number < data.length && number + 20 < data.length) {
+      setNumber(number + 20);
+    } else {
+      setNumber(data.length);
+    }
   };
   const routes = useRoutes([
     {
