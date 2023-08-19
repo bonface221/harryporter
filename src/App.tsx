@@ -50,7 +50,7 @@ function App() {
       setCharacters(data.slice(0, number));
       return;
     }
-    const filteredCharacters = data.filter((character) =>
+    const filteredCharacters = data.filter((character: characters) =>
       character.name.toLowerCase().includes(search.toLowerCase())
     );
     setCharacters(filteredCharacters);

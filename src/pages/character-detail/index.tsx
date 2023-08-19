@@ -14,7 +14,7 @@ import { MdHouse } from "react-icons/md";
 import { BsTools } from "react-icons/bs";
 import { MdTimelapse } from "react-icons/md";
 import { MdOutlineDashboard } from "react-icons/md";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { getCharacter } from "../../hooks/useFetchQuery";
 import { useQuery } from "react-query";
 import { useState } from "react";
@@ -22,7 +22,7 @@ import { characters } from "../../App";
 
 const CharacterDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+
   const [charactersLoading, setCharactersLoading] = useState<boolean>(true);
   const toast = useToast();
   const [character, setCharacter] = useState<characters | null>(null);
@@ -41,7 +41,7 @@ const CharacterDetail = () => {
       },
     }
   );
-  if (!id) return navigate("/");
+  if (!id) return <Navigate to="/" />;
 
   if (isError) {
     toast({
@@ -52,7 +52,6 @@ const CharacterDetail = () => {
       isClosable: true,
       position: "top",
     });
-    return;
   }
   if (isLoading || charactersLoading) {
     return (
@@ -61,7 +60,7 @@ const CharacterDetail = () => {
       </Flex>
     );
   }
-  if (!character) return null;
+  if (!character) return;
   return (
     <Box my={2}>
       <Stack maxW="md" mx="auto">
