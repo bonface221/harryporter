@@ -2,10 +2,11 @@ import { useRoutes } from "react-router-dom";
 import "./App.css";
 import CharacterDetail from "./pages/character-detail";
 import Home from "./pages/home";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex, Spinner, useToast } from "@chakra-ui/react";
 import Navbar from "./components/navbar";
 import { useState, useEffect } from "react";
-import { data } from "../playground";
+import { useQuery } from "react-query";
+import { getAllCharacters } from "./hooks/useFetchQuery";
 
 export interface characters {
   id: string;
@@ -33,10 +34,16 @@ export interface characters {
 function App() {
   const [number, setNumber] = useState<number>(20);
   const [characters, setCharacters] = useState<characters[]>([]);
+  const toast = useToast();
 
+  const { isLoading, isError, data } = useQuery(
+    ["characters"],
+    getAllCharacters
+  );
   useEffect(() => {
+    if (!data) return;
     setCharacters(data.slice(0, number));
-  }, [number]);
+  }, [number, data]);
 
   const onSearch = (search: string) => {
     if (!search) {
@@ -55,6 +62,7 @@ function App() {
       setNumber(data.length);
     }
   };
+
   const routes = useRoutes([
     {
       path: "/",
@@ -63,7 +71,7 @@ function App() {
           number={number}
           characters={characters}
           onNumberChange={onNumberChange}
-          dataLength={data.length}
+          dataLength={80}
         />
       ),
     },
@@ -72,7 +80,24 @@ function App() {
       element: <CharacterDetail />,
     },
   ]);
-
+  if (isError) {
+    toast({
+      title: "An error occurred.",
+      description: "Unable to fetch data",
+      status: "error",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+    return;
+  }
+  if (isLoading) {
+    return (
+      <Flex>
+        <Spinner size="xl" />
+      </Flex>
+    );
+  }
   return (
     <Box bg="brand.bgBlack" color="brand.white" h="100vh" overflowY="scroll">
       <Box mx={{ base: "2%", md: "5%", lg: "10%" }}>
