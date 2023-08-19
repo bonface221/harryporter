@@ -17,17 +17,30 @@ import { MdOutlineDashboard } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCharacter } from "../../hooks/useFetchQuery";
 import { useQuery } from "react-query";
+import { useState } from "react";
+import { characters } from "../../App";
 
 const CharacterDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [charactersLoading, setCharactersLoading] = useState<boolean>(true);
   const toast = useToast();
+  const [character, setCharacter] = useState<characters | null>(null);
 
-  const {
-    isLoading,
-    isError,
-    data: character,
-  } = useQuery(["characterDetail"], () => getCharacter(id!));
+  const { isLoading, isError } = useQuery(
+    ["characterDetail"],
+    () => getCharacter(id!),
+    {
+      staleTime: 0,
+      onSuccess: (data) => {
+        setCharacter(data[0]);
+        setCharactersLoading(false);
+      },
+      onError: () => {
+        setCharactersLoading(false);
+      },
+    }
+  );
   if (!id) return navigate("/");
 
   if (isError) {
@@ -41,16 +54,16 @@ const CharacterDetail = () => {
     });
     return;
   }
-  if (isLoading) {
+  if (isLoading || charactersLoading) {
     return (
       <Flex>
         <Spinner size="xl" />
       </Flex>
     );
   }
+  if (!character) return null;
   return (
     <Box my={2}>
-      <Text color="brand.pink">Detail</Text>
       <Stack maxW="md" mx="auto">
         <Stack align="center" gap={5}>
           <Button
