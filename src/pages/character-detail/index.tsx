@@ -1,4 +1,13 @@
-import { Avatar, Box, Button, Flex, Icon, Stack, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Icon,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { MdHouse } from "react-icons/md";
 import { BsTools } from "react-icons/bs";
 import { MdTimelapse } from "react-icons/md";
@@ -29,8 +38,8 @@ const character = {
 
 const CharacterDetail = () => {
   return (
-    <Box mt={2}>
-      <Text>Character Detail</Text>
+    <Box my={2}>
+      <Text color="brand.pink">Detail</Text>
       <Stack maxW="md" mx="auto">
         <Stack align="center" gap={5}>
           <Button
@@ -65,7 +74,7 @@ const CharacterDetail = () => {
             name={character.name}
             src={character.image}
           />
-          <Box as="h2">{character.name}</Box>
+          <Heading fontSize="2xl">{character.name}</Heading>
           <Flex gap={2} flexWrap="wrap">
             {character.alternate_names.map((name) => (
               <Button
@@ -89,25 +98,39 @@ const CharacterDetail = () => {
               </Button>
             ))}
           </Flex>
-          <Stack>
-            <Text>Wand</Text>
-            <Flex>
-              <Stack>
-                <Icon as={MdOutlineDashboard} />
+          <Stack
+            align="center"
+            mt={2}
+            gap={6}
+            bg="brand.blackCard"
+            w="100%"
+            borderRadius="2xl"
+            p={4}
+            py={8}
+          >
+            <Heading fontSize="xl">Wand</Heading>
+            <Flex
+              w="100%"
+              justify="space-evenly"
+              flexDir={{ base: "column", sm: "row" }}
+              gap={4}
+            >
+              <Stack align="center">
+                <Icon as={MdOutlineDashboard} boxSize={8} color="brand.pink" />
                 <Text fontSize="lg" fontWeight="bold">
                   Core
                 </Text>
                 <Text>{character.wand.core}</Text>
               </Stack>
-              <Stack>
-                <Icon as={MdTimelapse} />
+              <Stack align="center">
+                <Icon as={MdTimelapse} boxSize={8} color="brand.pink" />
                 <Text fontSize="lg" fontWeight="bold">
                   Length
                 </Text>
                 <Text>{character.wand.length}</Text>
               </Stack>
-              <Stack>
-                <Icon as={BsTools} />
+              <Stack align="center">
+                <Icon as={BsTools} boxSize={8} color="brand.pink" />
                 <Text fontSize="lg" fontWeight="bold">
                   Core
                 </Text>
