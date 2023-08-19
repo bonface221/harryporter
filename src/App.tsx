@@ -4,7 +4,7 @@ import CharacterDetail from "./pages/character-detail";
 import Home from "./pages/home";
 import { Box, Flex, Spinner, useToast } from "@chakra-ui/react";
 import Navbar from "./components/navbar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { getAllCharacters } from "./hooks/useFetchQuery";
 
@@ -46,10 +46,6 @@ function App() {
       },
     }
   );
-  // useEffect(() => {
-  //   if (!data) return;
-  //   setCharacters(data.slice(0, number));
-  // }, [number, data]);
 
   const onSearch = (search: string) => {
     if (!search) {
