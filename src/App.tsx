@@ -38,12 +38,18 @@ function App() {
 
   const { isLoading, isError, data } = useQuery(
     ["characters"],
-    getAllCharacters
+    getAllCharacters,
+    {
+      staleTime: 0,
+      onSuccess: (data) => {
+        setCharacters(data.slice(0, number));
+      },
+    }
   );
-  useEffect(() => {
-    if (!data) return;
-    setCharacters(data.slice(0, number));
-  }, [number, data]);
+  // useEffect(() => {
+  //   if (!data) return;
+  //   setCharacters(data.slice(0, number));
+  // }, [number, data]);
 
   const onSearch = (search: string) => {
     if (!search) {
@@ -58,8 +64,10 @@ function App() {
   const onNumberChange = () => {
     if (number < data.length && number + 20 < data.length) {
       setNumber(number + 20);
+      setCharacters((prev) => [...prev, ...data.slice(number, number + 20)]);
     } else {
       setNumber(data.length);
+      setCharacters((prev) => [...prev, ...data.slice(number, data.length)]);
     }
   };
 
@@ -93,8 +101,10 @@ function App() {
   }
   if (isLoading) {
     return (
-      <Flex>
-        <Spinner size="xl" />
+      <Flex bg="brand.bgBlack" color="brand.white" h="100vh">
+        <Box mx={{ base: "2%", md: "5%", lg: "10%" }} mt={4}>
+          <Spinner size="xl" />
+        </Box>
       </Flex>
     );
   }
