@@ -8,8 +8,21 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { MdHouse } from "react-icons/md";
+import { characters } from "../../App";
 
-const Home = ({ number, characters, onNumberChange, dataLength }) => {
+interface HomeProps {
+  number: number;
+  characters: characters[];
+  onNumberChange: () => void;
+  dataLength: number;
+}
+
+const Home = ({
+  number,
+  characters,
+  onNumberChange,
+  dataLength,
+}: HomeProps) => {
   const shouldShowLoadMore = () => {
     if (number !== dataLength && number <= characters.length) {
       return true;

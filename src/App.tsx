@@ -7,9 +7,32 @@ import Navbar from "./components/navbar";
 import { useState, useEffect } from "react";
 import { data } from "../playground";
 
+export interface characters {
+  id: string;
+  name: string;
+  alternate_names: string[] | [];
+  species: string;
+  gender: string;
+  house: string;
+  dateOfBirth: null | string;
+  yearOfBirth: null | number;
+  wizard: boolean;
+  ancestry: string;
+  eyeColour: string;
+  hairColour: string;
+  wand: { wood: string; core: string; length: null | number };
+  patronus: string;
+  hogwartsStudent: boolean;
+  hogwartsStaff: boolean;
+  actor: string;
+  alternate_actors: string[] | [];
+  alive: boolean;
+  image: string;
+}
+
 function App() {
-  const [number, setNumber] = useState(20);
-  const [characters, setCharacters] = useState(data.slice(0, number));
+  const [number, setNumber] = useState<number>(20);
+  const [characters, setCharacters] = useState<characters[]>([]);
 
   useEffect(() => {
     setCharacters(data.slice(0, number));
