@@ -24,4 +24,5 @@ dist-ssr
 *.sw?
 
 playground.ts
+package-lock.json #this is ignored because we are using yarn 
 
