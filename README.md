@@ -1,27 +1,41 @@
-# React + TypeScript + Vite
+# Harry Potter Characters API with React, Chakra UI, TypeScript, and Axios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the repository for a web application built with React, Chakra UI, TypeScript, and Axios to fetch a list of characters from the Harry Potter API. This project is beginner-friendly and we encourage you to make modifications and contribute through pull requests.
 
-Currently, two official plugins are available:
+## Table of Contents
+   - Getting Started
+   - Technologies Used
+   - Installation
+   - Usage
+   - Contributing
+   - License
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Getting Started
+This project was bootstrapped using `yarn create vite my-app --template @chakra-ui/typescript` with the Chakra UI TypeScript template.
 
-## Expanding the ESLint configuration
+### Technologies Used 
+1. [Chakra UI](https://chakra-ui.com/)
+2. [React](https://react.dev/)
+3. [Axios](https://axios-http.com/docs/intro)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installation
+To install the necessary dependencies for this project,fork the project to make a copy on your own github account. You can click [here](https://github.com/bonface221/harryporter/fork) then  navigate to the root directory and run the following command:
 
-- Configure the top-level `parserOptions` property like this:
+`git clone <the url to the repo goes here take the one you use either https/ssh>`
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+### Usage
+To start the application, cd into the project directory and run:
+`yarn` 
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+to install the dependancies
+
+start the project using 
+`yarn dev` or `yarn run dev` either will work
+
+open your browser and open [http://localhost:5173](http://localhost:5173)
+
+!!! Done
+The application fetches a list of Harry Potter characters from an API using Axios, a promise-based HTTP client. The received data is then displayed using components from Chakra UI, a simple, modular, and accessible component library for React applications.
+
+### Contributing
+We encourage beginners to contribute to this project. You can make modifications to the code and create pull requests. We also encourage you to create new issues if you encounter any problems or have suggestions for improvements.
