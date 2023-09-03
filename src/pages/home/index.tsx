@@ -45,8 +45,7 @@ const Home = ({
             gap={3}
             bg="brand.bgIcon"
             py={4}
-            borderRadius="xl"
-          >
+            borderRadius="xl">
             <Avatar
               border={character.image.length ? "4px solid #FEB5A8" : "none"}
               size="2xl"
@@ -67,8 +66,7 @@ const Home = ({
                   color: "brand.bgBlack",
                 },
               }}
-              transition={"all 0.3s ease"}
-            >
+              transition={"all 0.3s ease"}>
               <Icon
                 transition={"all 0.3s ease"}
                 as={MdHouse}
@@ -76,7 +74,7 @@ const Home = ({
                 boxSize={5}
                 color="brand.pink"
               />
-              <Text>{character.house}</Text>
+              <Text>{character.house || "No House Available"}</Text>
             </Button>
           </Stack>
         ))}

@@ -79,8 +79,7 @@ const CharacterDetail = () => {
                 color: "brand.bgBlack",
               },
             }}
-            transition={"all 0.3s ease"}
-          >
+            transition={"all 0.3s ease"}>
             <Icon
               transition={"all 0.3s ease"}
               as={MdHouse}
@@ -88,7 +87,7 @@ const CharacterDetail = () => {
               boxSize={5}
               color="brand.pink"
             />
-            <Text>{character.house}</Text>
+            <Text>{character.house || "No House Available"}</Text>
           </Button>
           <Avatar
             border={character.image.length ? "4px solid #FEB5A8" : "none"}
@@ -115,8 +114,7 @@ const CharacterDetail = () => {
                     color: "brand.bgBlack",
                   },
                 }}
-                transition={"all 0.3s ease"}
-              >
+                transition={"all 0.3s ease"}>
                 <Text>{name}</Text>
               </Button>
             ))}
@@ -129,15 +127,13 @@ const CharacterDetail = () => {
             w="100%"
             borderRadius="2xl"
             p={4}
-            py={8}
-          >
+            py={8}>
             <Heading fontSize="xl">Wand</Heading>
             <Flex
               w="100%"
               justify="space-evenly"
               flexDir={{ base: "column", sm: "row" }}
-              gap={4}
-            >
+              gap={4}>
               <Stack align="center">
                 <Icon as={MdOutlineDashboard} boxSize={8} color="brand.pink" />
                 <Text fontSize="lg" fontWeight="bold">
