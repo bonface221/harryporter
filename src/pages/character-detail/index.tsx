@@ -10,11 +10,11 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { MdHouse } from "react-icons/md";
+import { MdHouse, MdArrowBack } from "react-icons/md";
 import { BsTools } from "react-icons/bs";
 import { MdTimelapse } from "react-icons/md";
 import { MdOutlineDashboard } from "react-icons/md";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getCharacter } from "../../hooks/useFetchQuery";
 import { useQuery } from "react-query";
 import { useState } from "react";
@@ -22,6 +22,7 @@ import { characters } from "../../App";
 
 const CharacterDetail = () => {
   const { id } = useParams();
+  const navigation = useNavigate();
 
   const [charactersLoading, setCharactersLoading] = useState<boolean>(true);
   const toast = useToast();
@@ -65,6 +66,32 @@ const CharacterDetail = () => {
     <Box my={2}>
       <Stack maxW="md" mx="auto">
         <Stack align="center" gap={5}>
+          <Flex gap={10}>
+              <Button
+            alignSelf="flex-start"
+            borderRadius="full"
+            bg="brand.blackCard"
+            display="flex"
+            gap={2}
+            color="brand.white"
+            _hover={{
+              bg: "brand.pink",
+              color: "brand.bgBlack"
+            }}
+            onClick={()=>navigation(-1)}
+            transition={"all 0.3s ease"}>
+            <Icon
+              transition={"all 0.3s ease"}
+              as={MdArrowBack}
+              className="houseIcon"
+              boxSize={5}
+              color="brand.pink"
+              _hover={{
+              color:'brand.bgBlack'
+              }}
+            />
+            <Text>{"Back"}</Text>
+          </Button>
           <Button
             alignSelf="flex-end"
             borderRadius="full"
@@ -89,6 +116,7 @@ const CharacterDetail = () => {
             />
             <Text>{character.house || "No House Available"}</Text>
           </Button>
+          </Flex>
           <Avatar
             border={character.image.length ? "4px solid #FEB5A8" : "none"}
             size="50px"
