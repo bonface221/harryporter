@@ -67,56 +67,57 @@ const CharacterDetail = () => {
       <Stack maxW="md" mx="auto">
         <Stack align="center" gap={5}>
           <Flex gap={10}>
-              <Button
-            alignSelf="flex-start"
-            borderRadius="full"
-            bg="brand.blackCard"
-            display="flex"
-            gap={2}
-            color="brand.white"
-            _hover={{
-              bg: "brand.pink",
-              color: "brand.bgBlack"
-              .houseIcon:{
-color:"brand.bgBlack"
-            }
-            }}
-            onClick={()=>navigation(-1)}
-            transition={"all 0.3s ease"}>
-            <Icon
-              transition={"all 0.3s ease"}
-              as={MdArrowBack}
-              className="houseIcon"
-              boxSize={5}
-              color="brand.pink"
-             
-            />
-            <Text>{"Back"}</Text>
-          </Button>
-          <Button
-            alignSelf="flex-end"
-            borderRadius="full"
-            bg="brand.blackCard"
-            display="flex"
-            gap={2}
-            color="brand.white"
-            _hover={{
-              bg: "brand.pink",
-              color: "brand.bgBlack",
-              ".houseIcon": {
+            <Button
+              alignSelf="flex-start"
+              borderRadius="full"
+              bg="brand.blackCard"
+              display="flex"
+              gap={2}
+              color="brand.white"
+              _hover={{
+                bg: "brand.pink",
                 color: "brand.bgBlack",
-              },
-            }}
-            transition={"all 0.3s ease"}>
-            <Icon
+                ".houseIcon": {
+                  color: "brand.bgBlack",
+                },
+              }}
+              onClick={() => navigation(-1)}
               transition={"all 0.3s ease"}
-              as={MdHouse}
-              className="houseIcon"
-              boxSize={5}
-              color="brand.pink"
-            />
-            <Text>{character.house || "No House Available"}</Text>
-          </Button>
+            >
+              <Icon
+                transition={"all 0.3s ease"}
+                as={MdArrowBack}
+                className="houseIcon"
+                boxSize={5}
+                color="brand.pink"
+              />
+              <Text>{"Back"}</Text>
+            </Button>
+            <Button
+              alignSelf="flex-end"
+              borderRadius="full"
+              bg="brand.blackCard"
+              display="flex"
+              gap={2}
+              color="brand.white"
+              _hover={{
+                bg: "brand.pink",
+                color: "brand.bgBlack",
+                ".houseIcon": {
+                  color: "brand.bgBlack",
+                },
+              }}
+              transition={"all 0.3s ease"}
+            >
+              <Icon
+                transition={"all 0.3s ease"}
+                as={MdHouse}
+                className="houseIcon"
+                boxSize={5}
+                color="brand.pink"
+              />
+              <Text>{character.house || "No House Available"}</Text>
+            </Button>
           </Flex>
           <Avatar
             border={character.image.length ? "4px solid #FEB5A8" : "none"}
@@ -143,7 +144,8 @@ color:"brand.bgBlack"
                     color: "brand.bgBlack",
                   },
                 }}
-                transition={"all 0.3s ease"}>
+                transition={"all 0.3s ease"}
+              >
                 <Text>{name}</Text>
               </Button>
             ))}
@@ -156,13 +158,15 @@ color:"brand.bgBlack"
             w="100%"
             borderRadius="2xl"
             p={4}
-            py={8}>
+            py={8}
+          >
             <Heading fontSize="xl">Wand</Heading>
             <Flex
               w="100%"
               justify="space-evenly"
               flexDir={{ base: "column", sm: "row" }}
-              gap={4}>
+              gap={4}
+            >
               <Stack align="center">
                 <Icon as={MdOutlineDashboard} boxSize={8} color="brand.pink" />
                 <Text fontSize="lg" fontWeight="bold">
