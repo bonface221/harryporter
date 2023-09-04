@@ -46,6 +46,7 @@ const Home = ({
             bg="brand.bgIcon"
             py={4}
             borderRadius="xl"
+            style={{ cursor: "pointer" }}
           >
             <Avatar
               border={character.image.length ? "4px solid #FEB5A8" : "none"}
