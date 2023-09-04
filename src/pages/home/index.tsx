@@ -36,7 +36,7 @@ const Home = ({
 
   return (
     <Stack my={12} gap={10}>
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing={10}>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, xl: 4 }} spacing={10}>
         {characters.map((character) => (
           <Stack
             onClick={() => navigate(`/${character.id}`)}
@@ -45,7 +45,8 @@ const Home = ({
             gap={3}
             bg="brand.bgIcon"
             py={4}
-            borderRadius="xl">
+            borderRadius="xl"
+          >
             <Avatar
               border={character.image.length ? "4px solid #FEB5A8" : "none"}
               size="2xl"
@@ -66,7 +67,8 @@ const Home = ({
                   color: "brand.bgBlack",
                 },
               }}
-              transition={"all 0.3s ease"}>
+              transition={"all 0.3s ease"}
+            >
               <Icon
                 transition={"all 0.3s ease"}
                 as={MdHouse}
