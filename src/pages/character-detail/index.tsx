@@ -77,6 +77,9 @@ const CharacterDetail = () => {
             _hover={{
               bg: "brand.pink",
               color: "brand.bgBlack"
+              .houseIcon:{
+color:"brand.bgBlack"
+            }
             }}
             onClick={()=>navigation(-1)}
             transition={"all 0.3s ease"}>
@@ -86,9 +89,7 @@ const CharacterDetail = () => {
               className="houseIcon"
               boxSize={5}
               color="brand.pink"
-              _hover={{
-              color:'brand.bgBlack'
-              }}
+             
             />
             <Text>{"Back"}</Text>
           </Button>
