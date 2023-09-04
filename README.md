@@ -39,3 +39,4 @@ The application fetches a list of Harry Potter characters from an API using Axio
 
 ### Contributing
 We encourage beginners to contribute to this project. You can make modifications to the code and create pull requests. We also encourage you to create new issues if you encounter any problems or have suggestions for improvements.
+Here is the [License](https://github.com/bonface221/harryporter/blob/master/LICENSE)
