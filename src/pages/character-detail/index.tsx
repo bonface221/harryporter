@@ -86,6 +86,9 @@ const CharacterDetail = () => {
               className="houseIcon"
               boxSize={5}
               color="brand.pink"
+              _hover={{
+              color:'brand.bgBlack'
+              }}
             />
             <Text>{"Back"}</Text>
           </Button>
