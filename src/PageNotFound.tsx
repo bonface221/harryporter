@@ -16,7 +16,7 @@ const PageNotFound = () => {
 		<Box my={2}>
 			<Stack maxW="md" mx="auto">
 				<Stack align="center" gap={5}>
-					<Heading as="h2" size="4xl" mt="24px" py={4}>
+					<Heading as="h2" size="3xl" mt="24px" py={4}>
 						404 page
 					</Heading>
 					<Text fontSize="xl" fontWeight="bold" py={8} textAlign="center">
