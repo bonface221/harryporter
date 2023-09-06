@@ -47,7 +47,7 @@ const Home = ({
 						py={4}
 						borderRadius="xl"
 						style={{ cursor: 'pointer' }}
-						transition="transform 0.8s ease-in-out"
+						transition="transform 0.8s ease"
 						_hover={{
 							transform: 'translateY(-15px) scale(1.05)',
 						}}
