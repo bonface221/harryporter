@@ -7,7 +7,7 @@ import Navbar from "./components/navbar";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { getAllCharacters } from "./hooks/useFetchQuery";
-import PageNotFound from './PageNotFound';
+import PageNotFound from "./components/page-not-found";
 
 export interface characters {
   id: string;
@@ -69,26 +69,26 @@ function App() {
   };
 
   const routes = useRoutes([
-		{
-			path: '/',
-			element: (
-				<Home
-					number={number}
-					characters={characters}
-					onNumberChange={onNumberChange}
-					dataLength={80}
-				/>
-			),
-		},
-		{
-			path: '/:id',
-			element: <CharacterDetail />,
-		},
-		{
-			path: '/*',
-			element: <PageNotFound />,
-		},
-	]);
+    {
+      path: "/",
+      element: (
+        <Home
+          number={number}
+          characters={characters}
+          onNumberChange={onNumberChange}
+          dataLength={80}
+        />
+      ),
+    },
+    {
+      path: "/:id",
+      element: <CharacterDetail />,
+    },
+    {
+      path: "*",
+      element: <PageNotFound />,
+    },
+  ]);
   if (isError) {
     toast({
       title: "An error occurred.",
