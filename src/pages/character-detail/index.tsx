@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Icon,
+  Image,
   Spinner,
   Stack,
   Text,
@@ -19,11 +20,11 @@ import { getCharacter } from "../../hooks/useFetchQuery";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import { characters } from "../../App";
+import NotFoundImage from "/characternotfound.svg";
 
 const CharacterDetail = () => {
   const { id } = useParams();
   const navigation = useNavigate();
-
   const [charactersLoading, setCharactersLoading] = useState<boolean>(true);
   const toast = useToast();
   const [character, setCharacter] = useState<characters | null>(null);
@@ -61,7 +62,16 @@ const CharacterDetail = () => {
       </Flex>
     );
   }
-  if (!character) return;
+  if (!character) {
+    return (
+      <Flex h="90vh" flexDir="column" justify="center" align="center">
+        <Text fontSize="2xl" fontWeight="bold">
+          character not found
+        </Text>
+        <Image src={NotFoundImage} objectFit="cover" height="100%" />
+      </Flex>
+    );
+  }
   return (
     <Box my={2}>
       <Stack maxW="md" mx="auto">
@@ -125,7 +135,7 @@ const CharacterDetail = () => {
             borderRadius="50%"
             name={character.name}
             src={character.image}
-            style={{height:'250px'}}
+            style={{ height: "250px" }}
           />
           <Heading fontSize="2xl">{character.name}</Heading>
           <Flex gap={2} flexWrap="wrap">
