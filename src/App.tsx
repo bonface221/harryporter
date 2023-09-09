@@ -112,7 +112,7 @@ function App() {
         <Box mx={{ base: "2%", md: "5%", lg: "10%" }}>
           <Navbar onSearch={onSearch} />
           <SimpleGrid
-            mt={3}
+            mt={12}
             columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
             spacing={10}
           >
