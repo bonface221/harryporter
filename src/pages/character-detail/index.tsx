@@ -135,7 +135,8 @@ const CharacterDetail = () => {
             borderRadius="50%"
             name={character.name}
             src={character.image}
-            style={{ height: "250px" }}
+            height="250px"
+            minW="200px"
           />
           <Heading fontSize="2xl">{character.name}</Heading>
           <Flex gap={2} flexWrap="wrap">
