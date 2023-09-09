@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 interface HomeProps {
   number: number;
   characters: characters[];
+
   onNumberChange: () => void;
 
   dataLength: number;
@@ -43,6 +44,7 @@ const Home = ({
             key={character.id}
             align="center"
             gap={3}
+            height="250px"
             bg="brand.bgIcon"
             py={4}
             borderRadius="xl"
