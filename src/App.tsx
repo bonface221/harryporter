@@ -2,7 +2,7 @@ import { useRoutes } from "react-router-dom";
 import "./App.css";
 import CharacterDetail from "./pages/character-detail";
 import Home from "./pages/home";
-import { Box, Flex, Spinner, useToast } from "@chakra-ui/react";
+import { Box, SimpleGrid, Skeleton, useToast } from "@chakra-ui/react";
 import Navbar from "./components/navbar";
 import { useState } from "react";
 import { useQuery } from "react-query";
@@ -31,6 +31,11 @@ export interface characters {
   alive: boolean;
   image: string;
 }
+
+const sampleSkeletonsArray = Array.from(
+  { length: 20 },
+  (_, index) => index + 1
+);
 
 function App() {
   const [number, setNumber] = useState<number>(20);
@@ -100,15 +105,26 @@ function App() {
     });
     return;
   }
+
   if (isLoading) {
     return (
-      <Flex bg="brand.bgBlack" color="brand.white" h="100vh">
-        <Box mx={{ base: "2%", md: "5%", lg: "10%" }} mt={4}>
-          <Spinner size="xl" />
+      <Box bg="brand.bgBlack">
+        <Box mx={{ base: "2%", md: "5%", lg: "10%" }}>
+          <Navbar onSearch={onSearch} />
+          <SimpleGrid
+            mt={3}
+            columns={{ base: 1, sm: 2, md: 3, xl: 4 }}
+            spacing={10}
+          >
+            {sampleSkeletonsArray.map((_, index) => (
+              <Skeleton key={index} height="250px" borderRadius="xl" />
+            ))}
+          </SimpleGrid>
         </Box>
-      </Flex>
+      </Box>
     );
   }
+
   return (
     <Box bg="brand.bgBlack" color="brand.white" h="100vh" overflowY="scroll">
       <Box mx={{ base: "2%", md: "5%", lg: "10%" }}>
